@@ -1,6 +1,10 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
-git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
+git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
 # Specify your gem's dependencies in darksky_api.gemspec
 gemspec
+
+# dependencies
+gem 'json', '~> 2.1.0'
+gem 'rest-client', '~> 2.0.2'

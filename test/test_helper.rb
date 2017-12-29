@@ -1,4 +1,4 @@
-$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
-require "darksky_api"
+$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
+require 'darksky-api'
 
-require "minitest/autorun"
+require 'minitest/autorun'

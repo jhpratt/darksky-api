@@ -1,0 +1,22 @@
+Style/ClassVars:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+Naming/FileName:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Metrics/LineLength:
+  # disable for comment-only lines and lines with URLs
+  IgnoredPatterns: [
+    '(\A|\s)#',
+    'https?://'
+  ]
+
