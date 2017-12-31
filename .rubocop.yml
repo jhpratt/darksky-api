@@ -16,7 +16,7 @@ Metrics/MethodLength:
 Metrics/LineLength:
   # disable for comment-only lines and lines with URLs
   IgnoredPatterns: [
-    '(\A|\s)#',
+    '^(\A|\s)*#',
     'https?://'
   ]
 

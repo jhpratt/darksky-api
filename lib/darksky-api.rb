@@ -1,5 +1,6 @@
 require 'darksky-api/version'
 require 'darksky-api/config'
+require 'darksky-api/location'
 require 'darksky-api/current'
 
 # @author Jacob Pratt <the.z.cuber@gmail.com>

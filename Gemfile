@@ -6,5 +6,5 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 gemspec
 
 # dependencies
-gem 'json', '~> 2.1.0'
-gem 'rest-client', '~> 2.0.2'
+gem 'json', '~> 2.1'
+gem 'rest-client', '~> 2.0'
