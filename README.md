@@ -1,8 +1,6 @@
 # DarkSky
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/darksky`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Disclaimer: This gem has no affiliation with DarkSky. It is an independent way to interact with its API.
 
 ## Installation
 
@@ -18,11 +16,80 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install darksky_api
+    $ gem install darksky-api
 
 ## Usage
 
-TODO: Write usage instructions here
+### DarkSky
+
+After importing DarkSky (`require 'darksky-api'`), you will need to configure it with some settings. All arguments are keyword arguments.
+
+To configure DarkSky, you'll need to call `DarkSky.confg` with the kwargs below.
+
+**Current kwargs**
+
+| kwarg | purpose | default |
+| --- | --- | --- |
+| key | secret key from DarkSky | *required* |
+
+### DarkSky::Location
+
+This library stores data *by location*. As such, you'll need to instantiate the `Location` class for each place you want data from. The required parameter is an array of the latitude and longitude.
+
+To instantiate a Location: `loc = DarkSky::Location.new [lat, long]`
+
+Optional kwargs:
+
+| kwarg | options | default |
+| --- | --- | --- |
+| `cache_duration` | any positive number (in seconds) | 300 |
+| `units` | `:auto`<br>`:si`<br>`:us`<br>`:uk`<br>`:canada` | `:si` |
+| `language` | any supported by DarkSky | `en` |
+
+After you've configured `DarkSky` and created a `Location`, you're all set to start using the data! By default, the cache duration is 5 minutes, so anything you do within that timeframe only results in a single request.
+
+To get data about the current time, use the `current` namespace. Here's all the operations defined in that namespace:
+
+    apparent_temperature (aliased as wind_chill, heat_index, feels_like)
+    clear?
+    cloud_cover
+    cloudy?
+    dew_point
+    foggy?
+    humidity
+    icon
+    nearest_storm_bearing
+    nearest_storm_bearing_text
+    nearest_storm_distance
+    ozone
+    precip_intensity
+    precip_intensity_text
+    precip_probability
+    precip_type
+    pressure
+    rainy?
+    sleet?
+    snowy?
+    summary
+    temperature
+    uv_index
+    visibility
+    wind_bearing
+    wind_bearing_text
+    wind_gust
+    wind_speed
+    windy?
+
+Example: How do you get the current temperature (actual and apparent) in New York City?
+
+```ruby
+require 'darksky-api'
+DarkSky.config 'KEY-VALUE'
+
+nyc = DarkSky::Location.new [40.7828687, -73.9675438]
+puts "temperature: #{nyc.current.temperature}" # actual air temperature
+puts "feels like: #{nyc.current.feels_like}" # apparent temperature
+```
 
 ## Development
 
@@ -32,7 +99,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/jhpratt/darksky_api.
+Bug reports and pull requests are welcome on GitHub at [jhpratt/darksky-api](https://github.com/jhpratt/darksky-api). Creating a pull request implies you are releasing you code under the license stated below.
 
 ## License
 

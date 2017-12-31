@@ -9,7 +9,7 @@ module DarkSky
   # @return [void]
   def self.config(opts)
     defaults = {
-      warnings: true
+      units: :si
     }
     opts = defaults.merge opts
 
@@ -17,7 +17,7 @@ module DarkSky
     @@key = opts.fetch(:key)
 
     # optional parameters
-    @@warnings = opts[:warnings]
+    @@units = opts[:units]
   end
 
   # @example
@@ -26,13 +26,5 @@ module DarkSky
   # @return [String] API key that was set by `.config()`
   def self.key
     @@key
-  end
-
-  # @example
-  #   DarkSky.warnings #=> true
-  # @since 0.1.0
-  # @return [boolean] whether or not warnings are printed (set in `.config()`)
-  def self.warnings
-    @@warnings
   end
 end
