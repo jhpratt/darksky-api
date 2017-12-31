@@ -14,6 +14,20 @@ module DarkSky
     # @return [Current] class containing data for current time and location
     attr_reader :current
 
+    # @example
+    #   location = DarkSky::Location.new [45, -90]
+    #   location.units #=> :si
+    # @since 0.1.2
+    # @return [Symbol] what unit system is being used
+    attr_reader :units
+
+    # @example
+    #   location = DarkSky::Location.new [45, -90]
+    #   location.language #=> :en
+    # @since 0.1.2
+    # @return [Symbol] what unit system is used
+    attr_reader :language
+
     # @example getter
     #   location = DarkSky::Location.new [45, -90]
     #   location.cache_duration #=> 300
@@ -27,10 +41,31 @@ module DarkSky
 
     # @param location [[Numeric, Numeric]] coordinates to get data of
     # @param [Numeric] cache_duration requests within this many seconds will be parsed on existing data
-    def initialize(location = [0, 0], cache_duration: 300)
+    # @param [Symbol | String] units what unit system to use
+    # @param [Symbol | String] language what language to return results in
+    def initialize(
+      location = [0, 0],
+      cache_duration: 300,
+      units: :auto,
+      language: :en
+    )
+      # initial value to avoid errors
+      @cache_time = 1
+
+      # initialize instance variables from args & kwargs
       @location = location
       @cache_duration = cache_duration # in seconds
-      @cache_time = 1
+      @language = language.to_sym
+
+      # aliases for some unit systems
+      units = units.to_sym
+      if units == :uk
+        @units == :uk2
+      elsif units == :canada
+        @units == :ca
+      else
+        @units = units
+      end
 
       # initialize classes for namespace
       @current = Current.new self
@@ -44,7 +79,9 @@ module DarkSky
     # @return [Hash] raw data (in full) from DarkSky
     def full_data
       if (Time.now - @cache_time).to_i >= @cache_duration
-        response = RestClient.get "https://api.darksky.net/forecast/#{DarkSky.key}/#{@location.join ','}"
+        response = RestClient.get "https://api.darksky.net/forecast/#{DarkSky.key}/#{@location.join ','}",
+                                  units: @units,
+                                  language: @language
         @data = JSON.parse response.body, symbolize_names: true
         @cache_time = Time.now
       end

@@ -19,6 +19,8 @@ class LocationTest < MiniTest::Test
 
   def test_defaults
     assert_equal @@location.cache_duration, 300
+    assert_equal @@location.units, :auto
+    assert_equal @@location.language, :en
   end
 
   def test_cache_duration

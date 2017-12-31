@@ -28,9 +28,9 @@ To configure DarkSky, you'll need to call `DarkSky.confg` with the kwargs below.
 
 **Current kwargs**
 
-| kwarg | purpose | default |
-| --- | --- | --- |
-| key | secret key from DarkSky | *required* |
+| kwarg | purpose                 | default    |
+|-------|-------------------------|------------|
+| key   | secret key from DarkSky | *required* |
 
 ### DarkSky::Location
 
@@ -40,11 +40,11 @@ To instantiate a Location: `loc = DarkSky::Location.new [lat, long]`
 
 Optional kwargs:
 
-| kwarg | options | default |
-| --- | --- | --- |
-| `cache_duration` | any positive number (in seconds) | 300 |
-| `units` | `:auto`<br>`:si`<br>`:us`<br>`:uk`<br>`:canada` | `:si` |
-| `language` | any supported by DarkSky | `en` |
+| kwarg            | options                                         | default |
+|------------------|-------------------------------------------------|---------|
+| `cache_duration` | any positive number (in seconds)                | 300     |
+| `units`          | `:auto`<br>`:si`<br>`:us`<br>`:uk`<br>`:canada` | `:auto` |
+| `language`       | any supported by DarkSky                        | `en`    |
 
 After you've configured `DarkSky` and created a `Location`, you're all set to start using the data! By default, the cache duration is 5 minutes, so anything you do within that timeframe only results in a single request.
 

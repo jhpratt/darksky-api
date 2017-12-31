@@ -6,21 +6,13 @@ class ConfigTest < Minitest::Test
   end
 
   def test_getters
-    ::DarkSky.config key: 'KEY-VALUE',
-                     warnings: false
+    ::DarkSky.config key: 'KEY-VALUE'
 
     assert_equal ::DarkSky.key, 'KEY-VALUE'
-    assert_equal ::DarkSky.warnings, false
   end
 
   def test_cannot_set
     ::DarkSky.config key: 'KEY-VALUE'
     assert_raises { ::DarkSky.key = 'NEW-VALUE' }
-    assert_raises { ::DarkSky.warnings = false }
-  end
-
-  def test_defaults
-    ::DarkSky.config key: 'KEY-VALUE'
-    assert_equal ::DarkSky.warnings, true
   end
 end
