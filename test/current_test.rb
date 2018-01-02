@@ -81,6 +81,13 @@ class CurrentTest < MiniTest::Test
     assert instance.cloudy?.is_a? Boolean
   end
 
+  def test_precip_intensity
+    assert_equal instance.send(:_precip_intensity_text, 0.01), 'sporadic'
+    assert_equal instance.send(:_precip_intensity_text, 0.05), 'light'
+    assert_equal instance.send(:_precip_intensity_text, 0.20), 'moderate'
+    assert_equal instance.send(:_precip_intensity_text, 0.50), 'heavy'
+  end
+
   private
 
   def instance

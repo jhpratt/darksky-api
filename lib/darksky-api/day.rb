@@ -113,7 +113,7 @@ module DarkSky
       # @return [String] textual representation of moon phase
       def moon_phase_text
         # separate method for easy unit testing
-        _moon_phase_text moon_phase
+        _moon_phase_text(moon_phase)
       end
 
       # @example
@@ -131,15 +131,7 @@ module DarkSky
       # @since 0.1.3
       # @return [String] text representation of precipitation intensity on day
       def precip_intensity_text
-        if precip_intensity >= 0.400
-          'heavy'
-        elsif precip_intensity >= 0.100
-          'moderate'
-        elsif precip_intensity >= 0.017
-          'light'
-        elsif precip_intensity >= 0.002
-          'very light'
-        end
+        _precip_intensity_text(precip_intensity)
       end
 
       # @example
@@ -157,15 +149,7 @@ module DarkSky
       # @since 0.1.3
       # @return [String] text representation of maximum precipitation intensity on day
       def precip_intensity_max_text
-        if precip_intensity_max >= 0.400
-          'heavy'
-        elsif precip_intensity_max >= 0.100
-          'moderate'
-        elsif precip_intensity_max >= 0.017
-          'light'
-        elsif precip_intensity_max >= 0.002
-          'very light'
-        end
+        _precip_intensity_text(precip_intensity_max)
       end
 
       # @example
@@ -394,7 +378,7 @@ module DarkSky
       # keep this a separate method for testing purposes
       # @since 0.1.3
       # @return [String] text representation of moon phase
-      def _moon_phase_text(phase) # rubocop:disable Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity, Metrics/LineLength
+      def _moon_phase_text(phase)
         if phase < 0.05
           'new moon'
         elsif phase < 0.20
@@ -413,6 +397,22 @@ module DarkSky
           'waning crescent moon'
         else
           'new moon'
+        end
+      end
+
+      # convert precip intensity to text
+      # keep this a separate method for testing purposes
+      # @since 0.1.3
+      # @return [String] text representation of precipitation intensity
+      def _precip_intensity_text(intensity)
+        if intensity >= 0.400
+          'heavy'
+        elsif intensity >= 0.100
+          'moderate'
+        elsif intensity >= 0.017
+          'light'
+        elsif intensity >= 0.002
+          'sporadic'
         end
       end
     end

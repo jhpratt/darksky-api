@@ -171,15 +171,7 @@ module DarkSky
       # @since 0.1.0
       # @return [String] text representation of precipitation intensity at location
       def precip_intensity_text
-        if precip_intensity >= 0.400
-          'heavy'
-        elsif precip_intensity >= 0.100
-          'moderate'
-        elsif precip_intensity >= 0.017
-          'light'
-        elsif precip_intensity >= 0.002
-          'very light'
-        end
+        _precip_intensity_text(precip_intensity)
       end
 
       # @example
@@ -289,6 +281,22 @@ module DarkSky
       # @return [Hash] full data for current time
       def data
         @location.full_data[:currently]
+      end
+
+      # convert precip intensity to text
+      # keep this a separate method for testing purposes
+      # @since 0.1.3
+      # @return [String] text representation of precipitation intensity
+      def _precip_intensity_text(intensity)
+        if intensity >= 0.400
+          'heavy'
+        elsif intensity >= 0.100
+          'moderate'
+        elsif intensity >= 0.017
+          'light'
+        elsif intensity >= 0.002
+          'sporadic'
+        end
       end
     end
   end

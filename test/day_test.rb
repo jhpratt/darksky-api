@@ -168,6 +168,13 @@ class DayTest < MiniTest::Test
     assert_equal instance.send(:_moon_phase_text, 1.00), 'new moon'
   end
 
+  def test_precip_intensity
+    assert_equal instance.send(:_precip_intensity_text, 0.01), 'sporadic'
+    assert_equal instance.send(:_precip_intensity_text, 0.05), 'light'
+    assert_equal instance.send(:_precip_intensity_text, 0.20), 'moderate'
+    assert_equal instance.send(:_precip_intensity_text, 0.50), 'heavy'
+  end
+
   private
 
   def instance

@@ -19,7 +19,7 @@ module DarkSky
 
     # @example
     #   location = DarkSky::Location.new [45, -90]
-    #   location.units #=> :si
+    #   location.units #=> :auto
     # @since 0.1.2
     # @return [Symbol] what unit system is being used
     attr_reader :units
@@ -46,11 +46,13 @@ module DarkSky
     # @param [Numeric] cache_duration requests within this many seconds will be parsed on existing data
     # @param [Symbol | String] units what unit system to use
     # @param [Symbol | String] language what language to return results in
+    # @param [Boolean] prefetch immediately perform an API request upon initialization?
     def initialize(
       location = [0, 0],
       cache_duration: 300,
       units: :auto,
-      language: :en
+      language: :en,
+      prefetch: false
     )
       # initial value to avoid errors
       @cache_time = 1
@@ -59,19 +61,17 @@ module DarkSky
       @location = location
       @cache_duration = cache_duration # in seconds
       @language = language.to_sym
+      @units = units.to_sym
 
       # aliases for some unit systems
-      units = units.to_sym
-      if units == :uk
-        @units == :uk2
-      elsif units == :canada
-        @units == :ca
-      else
-        @units = units
-      end
+      @units = :uk2 if @units == :uk
+      @units = :ca if @units == :canada
 
       # initialize classes for namespace
       @current = Current.new self
+
+      # perform API request if prefetch is true
+      full_data if prefetch
     end
 
     # update cache if necessary and get latest data
