@@ -1,3 +1,6 @@
+require 'rest-client'
+require 'json'
+
 module DarkSky
   class Location
     # @example
@@ -25,7 +28,7 @@ module DarkSky
     #   location = DarkSky::Location.new [45, -90]
     #   location.language #=> :en
     # @since 0.1.2
-    # @return [Symbol] what unit system is used
+    # @return [Symbol] what language is used
     attr_reader :language
 
     # @example getter

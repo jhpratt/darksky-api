@@ -20,3 +20,5 @@ Metrics/LineLength:
     'https?://'
   ]
 
+Metrics/ClassLength:
+  Max: 200

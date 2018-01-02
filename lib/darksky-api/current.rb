@@ -1,10 +1,8 @@
-require 'rest-client'
-require 'json'
-
 module DarkSky
   class Location
     class Current
       # automatically called by `Location`
+      # @since 0.1.0
       # @param [Location] location where to get data from
       def initialize(location)
         @location = location
@@ -16,9 +14,8 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current apparent temperature at location
       def apparent_temperature
-        @location.full_data[:currently][:apparentTemperature]
+        data[:apparentTemperature]
       end
-
       alias wind_chill apparent_temperature
       alias heat_index apparent_temperature
       alias feels_like apparent_temperature
@@ -29,7 +26,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current cloud cover at location
       def cloud_cover
-        @location.full_data[:currently][:cloudCover]
+        data[:cloudCover]
       end
 
       # @example
@@ -38,7 +35,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current dew point at location
       def dew_point
-        @location.full_data[:currently][:dewPoint]
+        data[:dewPoint]
       end
 
       # @example
@@ -47,7 +44,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current humidity at location
       def humidity
-        @location.full_data[:currently][:humidity]
+        data[:humidity]
       end
 
       # @example
@@ -56,7 +53,7 @@ module DarkSky
       # @since 0.1.0
       # @return [String] icon representation of current weather at location
       def icon
-        @location.full_data[:currently][:icon]
+        data[:icon]
       end
 
       # @example
@@ -128,7 +125,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] nearest storm bearing at location
       def nearest_storm_bearing
-        @location.full_data[:currently][:nearestStormBearing]
+        data[:nearestStormBearing]
       end
 
       # @example
@@ -147,7 +144,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] nearest storm distance from location
       def nearest_storm_distance
-        @location.full_data[:currently][:nearestStormDistance]
+        data[:nearestStormDistance]
       end
 
       # @example
@@ -156,7 +153,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current ozone level at location
       def ozone
-        @location.full_data[:currently][:ozone]
+        data[:ozone]
       end
 
       # @example
@@ -165,11 +162,11 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current precipitation intensity at location
       def precip_intensity
-        @location.full_data[:currently][:precipIntensity]
+        data[:precipIntensity]
       end
 
       # @example
-      #   location = DarkSky::Locaiton.new [45,- 90]
+      #   location = DarkSky::Locaiton.new [45, -90]
       #   location.current.precip_intensity_text #=> text representation of precipitation intensity at location
       # @since 0.1.0
       # @return [String] text representation of precipitation intensity at location
@@ -191,7 +188,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current precipitation probability at location
       def precip_probability
-        @location.full_data[:currently][:precipProbability]
+        data[:precipProbability]
       end
 
       # @example
@@ -200,7 +197,7 @@ module DarkSky
       # @since 0.1.0
       # @return [String | nil] current precipitation type at location
       def precip_type
-        @location.full_data[:currently][:precipType]
+        data[:precipType]
       end
 
       # @example
@@ -209,7 +206,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current barometric pressure at location
       def pressure
-        @location.full_data[:currently][:pressure]
+        data[:pressure]
       end
 
       # @example
@@ -218,7 +215,7 @@ module DarkSky
       # @since 0.1.0
       # @return [String] summary of weather at location
       def summary
-        @location.full_data[:currently][:summary]
+        data[:summary]
       end
 
       # @example
@@ -227,7 +224,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current temperature at location
       def temperature
-        @location.full_data[:currently][:temperature]
+        data[:temperature]
       end
 
       # @example
@@ -236,7 +233,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current UV index at location
       def uv_index
-        @location.full_data[:currently][:uvIndex]
+        data[:uvIndex]
       end
 
       # @example
@@ -245,7 +242,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current visibility at location
       def visibility
-        @location.full_data[:currently][:visibility]
+        data[:visibility]
       end
 
       # @example
@@ -254,7 +251,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current wind bearing at location
       def wind_bearing
-        @location.full_data[:currently][:windBearing]
+        data[:windBearing]
       end
 
       # @example
@@ -273,7 +270,7 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current wind gust at location
       def wind_gust
-        @location.full_data[:currently][:windGust]
+        data[:windGust]
       end
 
       # @example
@@ -282,7 +279,16 @@ module DarkSky
       # @since 0.1.0
       # @return [Numeric] current wind speed at location
       def wind_speed
-        @location.full_data[:currently][:windSpeed]
+        data[:windSpeed]
+      end
+
+      private
+
+      # helper to avoid typing this many times over
+      # @since 0.1.3
+      # @return [Hash] full data for current time
+      def data
+        @location.full_data[:currently]
       end
     end
   end
