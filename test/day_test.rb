@@ -21,34 +21,19 @@ class DayTest < MiniTest::Test
     assert defined? instance.temperature_high_time
     assert defined? instance.temperature_low
     assert defined? instance.temperature_low_time
-    assert defined? instance.icon
-    assert defined? instance.summary
     assert defined? instance.sunrise_time
     assert defined? instance.sunset_time
     assert defined? instance.moon_phase
     assert defined? instance.moon_phase_text
-    assert defined? instance.precip_intensity
     assert defined? instance.precip_intensity_max
     assert defined? instance.precip_intensity_max_time
-    assert defined? instance.precip_probability
-    assert defined? instance.precip_type
     assert defined? instance.precip_accumulation
     assert defined? instance.apparent_temperature_high
     assert defined? instance.apparent_temperature_low
     assert defined? instance.apparent_temperature_high_time
     assert defined? instance.apparent_temperature_low_time
-    assert defined? instance.dew_point
-    assert defined? instance.humidity
-    assert defined? instance.pressure
-    assert defined? instance.wind_speed
-    assert defined? instance.wind_gust
     assert defined? instance.wind_gust_time
-    assert defined? instance.wind_bearing
-    assert defined? instance.cloud_cover
-    assert defined? instance.uv_index
     assert defined? instance.uv_index_time
-    assert defined? instance.visibility
-    assert defined? instance.ozone
 
     # aliases
     assert defined? instance.high_temperature
@@ -75,7 +60,6 @@ class DayTest < MiniTest::Test
     assert defined? instance.wind_chill_low
 
     # derived methods
-    assert defined? instance.precip_intensity_text
     assert defined? instance.precip_intensity_max_text
   end
 
@@ -86,30 +70,15 @@ class DayTest < MiniTest::Test
     assert instance.temperature_high_time.is_a? Time
     assert instance.temperature_low.is_a? Numeric
     assert instance.temperature_low_time.is_a? Time
-    assert instance.icon.is_a? String
-    assert instance.summary.is_a? String
     assert instance.sunrise_time.is_a? Time
     assert instance.sunset_time.is_a? Time
     assert instance.moon_phase.is_a? Numeric
     assert instance.moon_phase_text.is_a? String
-    assert instance.precip_type.is_a? NullableString
-    assert instance.precip_intensity.is_a? Numeric
     assert instance.precip_intensity_max.is_a? Numeric
     assert instance.precip_intensity_max_time.is_a? NullableTime
-    assert instance.precip_probability.is_a? Numeric
     assert instance.precip_accumulation.is_a? NullableNumeric
-    assert instance.dew_point.is_a? Numeric
-    assert instance.humidity.is_a? Numeric
-    assert instance.pressure.is_a? Numeric
-    assert instance.wind_speed.is_a? Numeric
-    assert instance.wind_gust.is_a? Numeric
     assert instance.wind_gust_time.is_a? Time
-    assert instance.wind_bearing.is_a? Numeric
-    assert instance.cloud_cover.is_a? Numeric
-    assert instance.uv_index.is_a? Numeric
     assert instance.uv_index_time.is_a? Time
-    assert instance.visibility.is_a? Numeric
-    assert instance.ozone.is_a? Numeric
 
     # aliases
     assert instance.high_temperature.is_a? Numeric
@@ -152,7 +121,6 @@ class DayTest < MiniTest::Test
     assert instance.wind_chill_low_time.is_a? Numeric
 
     # derived methods
-    assert instance.precip_intensity_text.is_a? NullableString
     assert instance.precip_intensity_max_text.is_a? NullableString
   end
 
@@ -166,13 +134,6 @@ class DayTest < MiniTest::Test
     assert_equal instance.send(:_moon_phase_text, 0.75), 'last quarter moon'
     assert_equal instance.send(:_moon_phase_text, 0.90), 'waning crescent moon'
     assert_equal instance.send(:_moon_phase_text, 1.00), 'new moon'
-  end
-
-  def test_precip_intensity
-    assert_equal instance.send(:_precip_intensity_text, 0.01), 'sporadic'
-    assert_equal instance.send(:_precip_intensity_text, 0.05), 'light'
-    assert_equal instance.send(:_precip_intensity_text, 0.20), 'moderate'
-    assert_equal instance.send(:_precip_intensity_text, 0.50), 'heavy'
   end
 
   private

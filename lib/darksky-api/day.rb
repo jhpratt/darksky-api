@@ -1,6 +1,6 @@
 module DarkSky
   class Location
-    class Day
+    class Day < CommonMethods
       # automatically called by `Location`
       # @since 0.1.3
       # @param [Location] location where to get data from
@@ -61,24 +61,6 @@ module DarkSky
 
       # @example
       #   location = DarkSky::Location.new [45, -90]
-      #   location.today.icon #=> icon representation
-      # @since 0.1.3
-      # @return [String] icon representation of weather on day
-      def icon
-        data[:icon]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.summary #=> summary of weather
-      # @since 0.1.3
-      # @return [String] summary of weather on day
-      def summary
-        data[:summary]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
       #   location.today.sunrise_time #=> sunrise time on day
       # @since 0.1.3
       # @return [Time] object with sunrise timestamp
@@ -118,24 +100,6 @@ module DarkSky
 
       # @example
       #   location = DarkSky::Location.new [45, -90]
-      #   location.today.precip_intensity #=> precipitation intensity on day
-      # @since 0.1.3
-      # @return [Numeric] precipitation intensity on day
-      def precip_intensity
-        data[:precipIntensity]
-      end
-
-      # @example
-      #   location = DarkSky::Locaiton.new [45, -90]
-      #   location.today.precip_intensity_text #=> text representation of precipitation intensity on day
-      # @since 0.1.3
-      # @return [String] text representation of precipitation intensity on day
-      def precip_intensity_text
-        _precip_intensity_text(precip_intensity)
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
       #   location.today.precip_intensity_max #=> precipitation intensity on day
       # @since 0.1.3
       # @return [Numeric] maximum precipitation intensity on day
@@ -159,24 +123,6 @@ module DarkSky
       # @return [Time] time of maximum precipitation intensity
       def precip_intensity_max_time
         Time.at data[:precipIntensityMaxTime] if data[:precipIntensityMaxTime]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.precip_probability #=> precipitation probability on day
-      # @since 0.1.3
-      # @return [Numeric] precipitation probability
-      def precip_probability
-        data[:precipProbability]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.precip_type #=> precipitation type on day
-      # @since 0.1.3
-      # @return [String | nil] current precipitation type on day
-      def precip_type
-        data[:precipType]
       end
 
       # @example
@@ -258,51 +204,6 @@ module DarkSky
 
       # @example
       #   location = DarkSky::Location.new [45, -90]
-      #   location.today.dew_point #=> dew point on day
-      # @since 0.1.3
-      # @return [Numeric] dew point on day
-      def dew_point
-        data[:dewPoint]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.humidity #=> humidity on day
-      # @since 0.1.3
-      # @return [Numeric] humidity on day
-      def humidity
-        data[:humidity]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.pressure #=> barometric pressue on day
-      # @since 0.1.3
-      # @return [Numeric] barometric pressure on day
-      def pressure
-        data[:pressure]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.wind_speed #=> wind speed on day
-      # @since 0.1.3
-      # @return [Numeric] wind speed on day
-      def wind_speed
-        data[:windSpeed]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.wind_gust #=> wind gust on day
-      # @since 0.1.3
-      # @return [Numeric] wind gust on day
-      def wind_gust
-        data[:windGust]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
       #   location.today.wind_gust_time #=> wind gust time on day
       # @since 0.1.3
       # @return [Time] wind gust time on day
@@ -312,56 +213,11 @@ module DarkSky
 
       # @example
       #   location = DarkSky::Location.new [45, -90]
-      #   location.today.wind_bearing #=> wind bearing on day
-      # @since 0.1.3
-      # @return [Numeric] wind bearing on day
-      def wind_bearing
-        data[:windBearing]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.cloud_cover #=> cloud cover on day
-      # @since 0.1.3
-      # @return [Numeric] cloud cover on day
-      def cloud_cover
-        data[:cloudCover]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.uv_index #=> UV index on day
-      # @since 0.1.3
-      # @return [Numeric] UV index on day
-      def uv_index
-        data[:uvIndex]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
       #   location.today.uv_index_time #=> max UV index time on day
       # @since 0.1.3
       # @return [Time] max UV index time on day
       def uv_index_time
         Time.at data[:uvIndexTime]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.visibility #=> visibility on day
-      # @since 0.1.3
-      # @return [Numeric] visibility on day
-      def visibility
-        data[:visibility]
-      end
-
-      # @example
-      #   location = DarkSky::Location.new [45, -90]
-      #   location.today.ozone #=> ozone on day
-      # @since 0.1.3
-      # @return [Numeric] ozone on day
-      def ozone
-        data[:ozone]
       end
 
       private
@@ -397,22 +253,6 @@ module DarkSky
           'waning crescent moon'
         else
           'new moon'
-        end
-      end
-
-      # convert precip intensity to text
-      # keep this a separate method for testing purposes
-      # @since 0.1.3
-      # @return [String] text representation of precipitation intensity
-      def _precip_intensity_text(intensity)
-        if intensity >= 0.400
-          'heavy'
-        elsif intensity >= 0.100
-          'moderate'
-        elsif intensity >= 0.017
-          'light'
-        elsif intensity >= 0.002
-          'sporadic'
         end
       end
     end

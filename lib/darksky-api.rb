@@ -1,6 +1,7 @@
 require 'darksky-api/version'
 require 'darksky-api/config'
 require 'darksky-api/location'
+require 'darksky-api/common-methods'
 require 'darksky-api/current'
 require 'darksky-api/day'
 

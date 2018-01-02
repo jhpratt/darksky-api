@@ -76,7 +76,7 @@ module DarkSky
 
     # update cache if necessary and get latest data
     # @example
-    #   location = DarkSky::Location.new
+    #   location = DarkSky::Location.new [45, -90]
     #   location.full_data
     # @since 0.1.0
     # @return [Hash] raw data (in full) from DarkSky
