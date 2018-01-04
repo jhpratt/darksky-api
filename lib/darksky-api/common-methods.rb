@@ -175,7 +175,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.clear?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'clear' variant
     def clear?
       %w[clear-day clear-night].include? icon
@@ -184,7 +184,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.rainy?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'rain'
     def rainy?
       icon == 'rain'
@@ -193,7 +193,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.snowy?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'snow'
     def snowy?
       icon == 'snow'
@@ -202,7 +202,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.sleet?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'sleet'
     def sleet?
       icon == 'sleet'
@@ -211,7 +211,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.windy?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'wind'
     def windy?
       icon == 'wind'
@@ -220,7 +220,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.foggy?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'fog'
     def foggy?
       icon == 'fog'
@@ -229,7 +229,7 @@ module DarkSky
     # @example
     #   location = DarkSky::Location.new [45, -90]
     #   location.current.cloudy?
-    # @since 0.1.0
+    # @since 0.1.4
     # @return [Boolean] if icon is 'cloudy' or variant
     def cloudy?
       %w[cloudy partly-cloudy-day partly-cloudy-night].include? icon
