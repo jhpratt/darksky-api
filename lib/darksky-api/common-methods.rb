@@ -249,11 +249,12 @@ module DarkSky
       elsif intensity >= 0.017
         'light'
       elsif intensity >= 0.002
-        'sporadic'
+        'spotty'
       end
     end
 
     def _bearing_text(degree)
+      return nil if degree.nil?
       directions = %w[N NNE NE ENE E ESE SE SSE S SSW SW WSW W WNW NW NNW]
       directions[degree / 22.5 + 0.5]
     end

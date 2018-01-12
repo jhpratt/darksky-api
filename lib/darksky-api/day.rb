@@ -276,6 +276,7 @@ module DarkSky
       Day.new self, 1
     end
     alias in_1_day tomorrow
+    alias in_1_days tomorrow
 
     # @example
     #   location = DarkSky::Location.new [45, -90]

@@ -83,8 +83,10 @@ module DarkSky
     def full_data
       if (Time.now - @cache_time).to_i >= @cache_duration
         response = RestClient.get "https://api.darksky.net/forecast/#{DarkSky.key}/#{@location.join ','}",
-                                  units: @units,
-                                  language: @language
+                                  params: {
+                                    units: @units,
+                                    lang: @language
+                                  }
         @data = JSON.parse response.body, symbolize_names: true
         @cache_time = Time.now
       end

@@ -6,6 +6,6 @@ require 'darksky-api/current'
 require 'darksky-api/day'
 
 # @author Jacob Pratt <the.z.cuber@gmail.com>
-# @version 0.1.4
+# @version 0.1.5
 module DarkSky
 end
