@@ -1,6 +1,7 @@
 # DarkSky
 
-[![Gem Version](https://img.shields.io/gem/v/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
+[![Gem version](https://img.shields.io/gem/v/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
+[![Build sttatus](https://api.travis-ci.org/jhpratt/darksky-api.svg?branch=master)](https://travis-ci.org/jhpratt/darksky-api)
 [![Documentation](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/darksky-api)
 [![Downloads](https://img.shields.io/gem/dt/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
 [![License](https://img.shields.io/github/license/jhpratt/darksky-api.svg)](https://github.com/jhpratt/darksky-api/blob/master/LICENSE.txt)

@@ -1,0 +1,15 @@
+language: ruby
+rvm:
+  # latest patch version of supported ruby versions
+  #- 2.5.0 # currently broken on Travis's end
+  - 2.4.3
+  - 2.3.6
+
+deploy:
+  provider: rubygems
+  api_key:
+    secure: d9IKla8xZTqO9vk44w0wQGahjWE8RrNLAi3ZQpKhxsciJr88aSVO0aDdlCP2lL94vWhJlpJAD5SP8KeVx9HqE8+0TMvfzv00Z9NP8VyD8rZnS6tdlRvxHsCeqQsK/cA32YgTqpdtl91YZVRuGkAyW4404QUDZx2trRs35UkxfUbincVGRfVf73QKOSxI3y56aLUgbn+9YqXR6QKmUhidqYs7nxDQikJ2Qap4/BdzJQzUM5iLvVbtvtCbPgUltkHE5PFy+Q/pDGHG0VHjw88vTYSpMFm0jqF8dMo1Kubov8RGKmCIBXfN+dyOu3TiWYeqNWvB0NyYPQsn5JDhQOmhaX5sLrVOvHCA/8D+IAf0TZhbF6Mr6WhIRE3AG27If5wIxHOzv3g/JmhLLselwWQYMB0Ct8S9RFJpfYTI77ipWEtedwq87ZktOqupAMRBV347xFQRHhPoYaageq122j2QbwCc8MNB1KWcUBwemWHUtRVJHPh5Fhk1k3Dul4QnnRNZ3TYlb9nco4/dKmQ8SVahhmYDpJ7pWgNjM7c2LN/ChEDjN79zCExSnlLCwfrprawDVsL46NIvadR/rwslCPLAKaJ58HfM1T8g3UjU7hSIQ3P30yv+r6vh8EXzFLsxrdRlpflUnhk4PfNQaHyM1BClzOHMch16oqvmBB8UbcRl1wY=
+  gem: darksky-api
+  on:
+    tags: true
+    repo: jhpratt/darksky-api
