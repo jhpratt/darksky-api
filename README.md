@@ -1,5 +1,10 @@
 # DarkSky
 
+[![Gem Version](https://img.shields.io/gem/v/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
+[![Documentation](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/darksky-api)
+[![Downloads](https://img.shields.io/gem/dt/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
+[![License](https://img.shields.io/github/license/jhpratt/darksky-api.svg)](https://github.com/jhpratt/darksky-api/blob/master/LICENSE.txt)
+
 Disclaimer: This gem has no affiliation with DarkSky. It is an independent way to interact with its API.
 
 ## Installation
