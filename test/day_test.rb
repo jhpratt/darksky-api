@@ -5,13 +5,18 @@ class DayTest < MiniTest::Test
     assert $location.today
     assert $location.tomorrow
     assert $location.in_0_days
-    assert $location.in_1_day
+    assert $location.in_1_days
     assert $location.in_2_days
     assert $location.in_3_days
     assert $location.in_4_days
     assert $location.in_5_days
     assert $location.in_6_days
     assert $location.in_7_days
+
+    # aliases
+    assert_equal $location.method(:today), $location.method(:in_0_days)
+    assert_equal $location.method(:tomorrow), $location.method(:in_1_day)
+    assert_equal $location.method(:tomorrow), $location.method(:in_1_days)
   end
 
   def test_methods_exist

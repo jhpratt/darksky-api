@@ -3,21 +3,16 @@ module DarkSky
   #
   # keyword arguments:
   # - **`key`** [required] ─ API key from [DarkSky](https://darksky.net/dev/account)
-  # - **`warnings`** [optional] ─ whether or not warnings are printed (default `true`)
   #
   # @since 0.1.0
   # @return [void]
   def self.config(opts)
     defaults = {
-      units: :si
     }
     opts = defaults.merge opts
 
     # required parameters
     @@key = opts.fetch(:key)
-
-    # optional parameters
-    @@units = opts[:units]
   end
 
   # @example
