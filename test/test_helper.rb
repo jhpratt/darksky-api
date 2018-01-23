@@ -24,3 +24,25 @@ class NilClass; include NullableTime; end
 module NullableNumeric; end
 class Numeric; include NullableNumeric; end
 class NilClass; include NullableNumeric; end
+
+def methods_exist_on(instance, methods)
+  methods.each do |method|
+    assert instance.respond_to? method
+  end
+end
+
+def aliases_on(instance, methods)
+  methods.each do |original, aliases|
+    aliases.each do |other|
+      assert_equal instance.method(original), instance.method(other)
+    end
+  end
+end
+
+def return_types_on(instance, types)
+  types.each do |type, methods|
+    methods.each do |method|
+      assert instance.public_send(method).is_a? type
+    end
+  end
+end

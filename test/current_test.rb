@@ -2,23 +2,27 @@ require 'test_helper'
 
 class CurrentTest < MiniTest::Test
   def test_methods_exist
-    # basic methods
-    assert defined? instance.nearest_storm_bearing
-    assert defined? instance.nearest_storm_distance
-    assert defined? instance.temperature
-
-    # derived methods
-    assert defined? instance.nearest_storm_bearing_text
+    methods_exist_on instance, %w[
+      nearest_storm_bearing
+      nearest_storm_distance
+      temperature
+      nearest_storm_bearing_text
+    ]
   end
 
   def test_return_types
-    # basic methods
-    assert instance.nearest_storm_bearing.is_a? NullableNumeric
-    assert instance.nearest_storm_distance.is_a? NullableNumeric
-    assert instance.temperature.is_a? Numeric
-
-    # derived methods
-    assert instance.nearest_storm_bearing_text.is_a? NullableString
+    return_types_on instance, {
+      Numeric => %w[
+        temperature
+      ],
+      NullableNumeric => %w[
+        nearest_storm_bearing
+        nearest_storm_distance
+      ],
+      NullableString => %w[
+        nearest_storm_bearing_text
+      ]
+    }
   end
 
   private

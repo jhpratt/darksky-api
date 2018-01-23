@@ -172,9 +172,9 @@ module DarkSky
       #   location = DarkSky::Location.new [45, -90]
       #   location.today.apparent_temperature_high_time #=> time of high apparent temperature
       # @since 0.1.3
-      # @return [Numeric] time of high apparent temperature
+      # @return [Time] time of high apparent temperature
       def apparent_temperature_high_time
-        data[:apparentTemperatureHighTime]
+        Time.at data[:apparentTemperatureHighTime]
       end
       alias high_apparent_temperature_time apparent_temperature_high_time
       alias apparent_high_temperature_time apparent_temperature_high_time
@@ -189,9 +189,9 @@ module DarkSky
       #   location = DarkSky::Location.new [45, -90]
       #   location.today.apparent_temperature_low_time #=> time of low apparent temperature
       # @since 0.1.3
-      # @return [Numeric] time of low apparent temperature
+      # @return [Time] time of low apparent temperature
       def apparent_temperature_low_time
-        data[:apparentTemperatureLowTime]
+        Time.at data[:apparentTemperatureLowTime]
       end
       alias low_apparent_temperature_time apparent_temperature_low_time
       alias apparent_low_temperature_time apparent_temperature_low_time

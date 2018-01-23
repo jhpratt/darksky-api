@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    darksky-api (0.1.5)
+    darksky-api (0.1.6)
       json (~> 2.1)
       rest-client (~> 2.0)
 
