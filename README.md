@@ -5,6 +5,7 @@
 [![Documentation](https://img.shields.io/badge/docs-rubydoc-blue.svg)](http://www.rubydoc.info/gems/darksky-api)
 [![Downloads](https://img.shields.io/gem/dt/darksky-api.svg)](https://rubygems.org/gems/darksky-api)
 [![License](https://img.shields.io/github/license/jhpratt/darksky-api.svg)](https://github.com/jhpratt/darksky-api/blob/master/LICENSE.txt)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjhpratt%2Fdarksky-api.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjhpratt%2Fdarksky-api?ref=badge_shield)
 
 Disclaimer: This gem has no affiliation with DarkSky. It is an independent way to interact with its API.
 
@@ -110,3 +111,6 @@ Bug reports and pull requests are welcome on GitHub at [jhpratt/darksky-api](htt
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjhpratt%2Fdarksky-api.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjhpratt%2Fdarksky-api?ref=badge_large)
